@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import static junit.framework.TestCase.assertEquals;
 
 public class SeleniumExamples extends Base {
 
@@ -23,6 +24,7 @@ public class SeleniumExamples extends Base {
 
     @Test
     public void openBrowser() {
+        assertEquals("Foobar", browser.getTitle());
     }
 
 }
