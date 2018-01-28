@@ -33,9 +33,14 @@ public class SeleniumExamples extends Base {
         WebElement css = browser.findElement(By.cssSelector("a[data-test=sign-in]"));
         WebElement xpath = browser.findElement(By.xpath("//a[@data-test='sign-in']"));
 
+        WebElement tag = browser.findElements(By.tagName("a")).get(1);
+        WebElement name = browser.findElements(By.className("nav-item")).get(1);
+
         assertEquals(linkText, partialLinkText);
         assertEquals(partialLinkText, css);
         assertEquals(css, xpath);
+        assertEquals(xpath, tag);
+        assertEquals(tag, name);
     }
 
 }
