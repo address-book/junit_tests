@@ -23,8 +23,10 @@ public class SeleniumExamples extends Base {
     }
 
     @Test
-    public void openBrowser() {
-        assertEquals("", browser.getTitle());
+    public void navigateBrowser() {
+        browser.get("http://address-book-example.herokuapp.com");
+
+        assertEquals("AddressBook", browser.getTitle());
     }
 
 }
