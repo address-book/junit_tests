@@ -8,12 +8,15 @@ import static junit.framework.TestCase.assertEquals;
 public class Users extends Base {
 
     @Test
-    public void login() {
+    public void login() throws InterruptedException {
         browser.get("http://address-book-example.herokuapp.com");
 
         browser.findElement(By.cssSelector("a[data-test=sign-in]")).click();
 
         String email = "techwell@example.com";
+
+        Thread.sleep(5000);
+
         browser.findElement(By.id("session_email")).sendKeys(email);
         browser.findElement(By.id("session_password")).sendKeys("password");
         browser.findElement(By.name("commit")).click();
