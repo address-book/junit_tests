@@ -24,7 +24,7 @@ public class SeleniumExamples extends Base {
 
     @Test
     public void openBrowser() {
-        assertEquals("Foobar", browser.getTitle());
+        assertEquals("", browser.getTitle());
     }
 
 }
