@@ -43,4 +43,16 @@ public class SeleniumExamples extends Base {
         assertEquals(tag, name);
     }
 
+    @Test
+    public void validateElement() {
+        browser.get("http://address-book-example.herokuapp.com");
+
+        By locator = By.cssSelector("a[data-test=sign-in]");
+        WebElement signIn = browser.findElement(locator);
+
+        assertEquals("sign-in", signIn.getAttribute("data-test"));
+        assertEquals("a", signIn.getTagName());
+        assertEquals("Sign in", signIn.getText());
+    }
+
 }
