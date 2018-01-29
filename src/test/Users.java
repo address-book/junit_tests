@@ -1,5 +1,6 @@
 package test;
 
+import com.github.javafaker.Faker;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,8 +25,10 @@ public class Users extends Base {
                 ExpectedConditions.presenceOfElementLocated(
                         By.cssSelector("a[data-test=sign-up]"))).click();
 
-        String email = "techwell@example.com";
-        String password = "password";
+        Faker faker = new Faker();
+
+        String email = faker.internet().emailAddress();
+        String password = faker.internet().password();
 
         wait.until(
                 ExpectedConditions.presenceOfElementLocated(
