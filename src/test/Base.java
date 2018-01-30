@@ -1,25 +1,25 @@
 package test;
 
-import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Base {
 
     protected WebDriver browser;
 
     @Before
-    public void setup() {
-        System.setProperty("wdm.targetPath", "lib/drivers/");
-        ChromeDriverManager.getInstance().setup();
+    public void setup() throws MalformedURLException {
+        String url = "http://localhost:4444/wd/hub";
 
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("disable-infobars");
-
-        browser = new ChromeDriver(chromeOptions);
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("browserName", "Chrome");
+        browser = new RemoteWebDriver(new URL(url), caps);
     }
 
     @After
