@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage extends Base {
 
-    private By signInLink = By.cssSelector("a[data-test=sign-in]");
+    public By signOutLink = By.cssSelector("a[data-test=sign-out]");
     private By user = By.cssSelector("span[data-test=current-user]");
 
     public static HomePage visit(WebDriver browser) {
@@ -18,8 +18,12 @@ public class HomePage extends Base {
         this.browser = browser;
     }
 
-    public void followSignIn() {
-        click(signInLink);
+    public void signOut() {
+        click(signOutLink);
+    }
+
+    public Boolean isSignedOut() {
+        return findElements(user).isEmpty();
     }
 
     public String currentUser() {
