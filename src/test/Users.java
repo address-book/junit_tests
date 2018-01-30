@@ -1,5 +1,8 @@
 package test;
 
+import data.*;
+import pages.*;
+
 import data.UserData;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -13,11 +16,11 @@ public class Users extends Base {
 
     @Test
     public void signUpLogOutLogIn() {
-        browser.get("http://address-book-example.herokuapp.com");
+        HomePage homePage = HomePage.visit(browser);
 
         // Sign Up
 
-        browser.findElement(By.cssSelector("a[data-test=sign-in]")).click();
+        homePage.followSignIn();
 
         WebDriverWait wait = new WebDriverWait(browser, 10);
 
@@ -34,9 +37,7 @@ public class Users extends Base {
         browser.findElement(By.id("user_password")).sendKeys(userData.getPassword());
         browser.findElement(By.name("commit")).click();
 
-        String signedUpUser = browser.findElement(By.cssSelector("span[data-test=current-user]")).getText();
-
-        assertEquals(userData.getEmailAddress(), signedUpUser);
+        assertEquals(userData.getEmailAddress(), homePage.currentUser());
 
         // Log Out
 
