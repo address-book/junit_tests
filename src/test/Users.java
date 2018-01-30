@@ -6,8 +6,6 @@ import pages.*;
 import data.UserData;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
@@ -16,27 +14,14 @@ public class Users extends Base {
 
     @Test
     public void signUpLogOutLogIn() {
-        HomePage homePage = HomePage.visit(browser);
-
         // Sign Up
 
-        homePage.followSignIn();
-
-        WebDriverWait wait = new WebDriverWait(browser, 10);
-
-        wait.until(
-                ExpectedConditions.presenceOfElementLocated(
-                        By.cssSelector("a[data-test=sign-up]"))).click();
+        SignUp signUp = SignUp.visit(browser);
 
         UserData userData = new UserData();
+        signUp.createUser(userData);
 
-        wait.until(
-                ExpectedConditions.presenceOfElementLocated(
-                        By.id("user_email"))).sendKeys(userData.getEmailAddress());
-
-        browser.findElement(By.id("user_password")).sendKeys(userData.getPassword());
-        browser.findElement(By.name("commit")).click();
-
+        HomePage homePage = new HomePage(browser);
         assertEquals(userData.getEmailAddress(), homePage.currentUser());
 
         // Log Out
