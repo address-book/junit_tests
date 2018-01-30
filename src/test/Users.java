@@ -1,6 +1,6 @@
 package test;
 
-import com.github.javafaker.Faker;
+import data.UserData;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,21 +25,18 @@ public class Users extends Base {
                 ExpectedConditions.presenceOfElementLocated(
                         By.cssSelector("a[data-test=sign-up]"))).click();
 
-        Faker faker = new Faker();
-
-        String email = faker.internet().emailAddress();
-        String password = faker.internet().password();
+        UserData userData = new UserData();
 
         wait.until(
                 ExpectedConditions.presenceOfElementLocated(
-                        By.id("user_email"))).sendKeys(email);
+                        By.id("user_email"))).sendKeys(userData.getEmailAddress());
 
-        browser.findElement(By.id("user_password")).sendKeys(password);
+        browser.findElement(By.id("user_password")).sendKeys(userData.getPassword());
         browser.findElement(By.name("commit")).click();
 
         String signedUpUser = browser.findElement(By.cssSelector("span[data-test=current-user]")).getText();
 
-        assertEquals(email, signedUpUser);
+        assertEquals(userData.getEmailAddress(), signedUpUser);
 
         // Log Out
 
@@ -49,13 +46,13 @@ public class Users extends Base {
 
         // Log In
 
-        browser.findElement(By.id("session_email")).sendKeys(email);
-        browser.findElement(By.id("session_password")).sendKeys(password);
+        browser.findElement(By.id("session_email")).sendKeys(userData.getEmailAddress());
+        browser.findElement(By.id("session_password")).sendKeys(userData.getPassword());
         browser.findElement(By.name("commit")).click();
 
         String loggedInUser = browser.findElement(By.cssSelector("span[data-test=current-user]")).getText();
 
-        assertEquals(email, loggedInUser);
+        assertEquals(userData.getEmailAddress(), loggedInUser);
     }
 
 }
