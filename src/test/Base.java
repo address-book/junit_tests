@@ -1,31 +1,20 @@
 package test;
 
+import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.MalformedURLException;
-import java.net.URL;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Base {
 
     protected WebDriver browser;
 
     @Before
-    public void setup() throws MalformedURLException {
-        String username = System.getenv("SAUCE_USERNAME");
-        String accesskey = System.getenv("SAUCE_ACCESS_KEY");
-
-        String url = "https://" + username + ":" + accesskey + "@ondemand.saucelabs.com:443/wd/hub";
-
-        DesiredCapabilities caps = DesiredCapabilities.chrome();
-        caps.setCapability("platform", "Windows 10");
-        caps.setCapability("version", "55.0");
-        caps.setCapability("name", "Techwell Austin");
-
-        browser = new RemoteWebDriver(new URL(url), caps);
+    public void setup() {
+        System.setProperty("wdm.targetPath", "lib/drivers/");
+        ChromeDriverManager.getInstance().setup();
+        browser = new ChromeDriver();
     }
 
     @After
