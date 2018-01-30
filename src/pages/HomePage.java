@@ -3,16 +3,14 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage {
-    public WebDriver browser;
-    public static String url = "http://address-book-example.herokuapp.com";
+public class HomePage extends Base {
 
-    public By signInLink = By.cssSelector("a[data-test=sign-in]");
-    public By user = By.cssSelector("span[data-test=current-user]");
+    private By signInLink = By.cssSelector("a[data-test=sign-in]");
+    private By user = By.cssSelector("span[data-test=current-user]");
 
     public static HomePage visit(WebDriver browser) {
         HomePage page = new HomePage(browser);
-        page.visit();
+        page.visit("http://address-book-example.herokuapp.com");
         return page;
     }
 
@@ -20,13 +18,11 @@ public class HomePage {
         this.browser = browser;
     }
 
-    public void visit() {
-        this.browser.get(url);
-    }
-
     public void followSignIn() {
-        browser.findElement(signInLink).click();
+        click(signInLink);
     }
 
-    public String currentUser() { return browser.findElement(user).getText(); }
+    public String currentUser() {
+        return getText(user);
+    }
 }
