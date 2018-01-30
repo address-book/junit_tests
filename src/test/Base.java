@@ -15,10 +15,16 @@ public class Base {
 
     @Before
     public void setup() throws MalformedURLException {
-        String url = "http://localhost:4444/wd/hub";
+        String username = System.getenv("SAUCE_USERNAME");
+        String accesskey = System.getenv("SAUCE_ACCESS_KEY");
 
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("browserName", "Chrome");
+        String url = "https://" + username + ":" + accesskey + "@ondemand.saucelabs.com:443/wd/hub";
+
+        DesiredCapabilities caps = DesiredCapabilities.chrome();
+        caps.setCapability("platform", "Windows 10");
+        caps.setCapability("version", "55.0");
+        caps.setCapability("name", "Techwell Austin");
+
         browser = new RemoteWebDriver(new URL(url), caps);
     }
 
