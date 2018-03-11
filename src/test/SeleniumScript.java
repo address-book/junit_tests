@@ -8,10 +8,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.junit.Assert.assertEquals;
+
 public class SeleniumScript {
 
     @Test
-    public void waitAndAct() {
+    public void signInLink() {
         // Set location of chromedriver
         System.setProperty("webdriver.chrome.driver", "lib/drivers/chromedriver");
 
@@ -29,6 +31,9 @@ public class SeleniumScript {
 
         // Take action on element
         signIn.click();
+
+        // Assert desired condition
+        assertEquals("Address Book - Sign In", driver.getTitle());
 
         // Quit session (closes browser)
         driver.quit();
