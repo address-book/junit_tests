@@ -25,4 +25,15 @@ public class LocateElement extends  Base {
         driver.findElement(By.xpath("//a[@data-test='sign-in']"));
     }
 
+    @Test
+    public void locateElementFromCollection() {
+        driver.get("http://a.testaddressbook.com");
+
+        // Class Name
+        driver.findElements(By.className("nav-item")).get(1);
+
+        // Tag Name
+        driver.findElements(By.tagName("a")).get(1);
+    }
+
 }
