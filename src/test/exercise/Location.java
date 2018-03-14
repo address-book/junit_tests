@@ -25,11 +25,11 @@ public class Location extends Base {
 
         // Update these fields:
 
-        String id = "";
-        String name = "";
-        String className = "";
-        String tagName = "";
-        Integer tagIndex = 0;
+        String id = "session_email";
+        String name = "session[email]";
+        String className = "form-control";
+        String tagName = "input";
+        Integer tagIndex = 2;
 
 
         // Obfuscated way of getting the Email Field
@@ -47,10 +47,10 @@ public class Location extends Base {
 
         // Update these fields:
 
-        String name = "";
-        String className = "";
-        String tagName = "";
-        Integer tagIndex = 0;
+        String name = "commit";
+        String className = "btn";
+        String tagName = "input";
+        Integer tagIndex = 4;
 
 
         // Obfuscated way of getting the Sign in Button
@@ -66,10 +66,10 @@ public class Location extends Base {
 
         // Update these fields:
 
-        String linkText = "";
-        String partialLinkText = "";
-        String tagName = "";
-        Integer tagIndex = 0;
+        String linkText = "Sign up";
+        String partialLinkText = "up";
+        String tagName = "a";
+        Integer tagIndex = 2;
 
 
         // Obfuscated way of getting the Sign Up Link
@@ -78,7 +78,6 @@ public class Location extends Base {
         assertEquals(signUpLink, driver.findElement(By.linkText(linkText)));
         assertEquals(signUpLink, driver.findElement(By.partialLinkText(partialLinkText)));
         assertEquals(signUpLink, driver.findElements(By.tagName(tagName)).get(tagIndex));
-
     }
 
 }
