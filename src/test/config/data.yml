@@ -1,0 +1,12 @@
+chrome_mac:
+  browser: Chrome
+  version: 63.0
+  platform: macOS 10.12
+firefox_win:
+  browser: Firefox
+  version: 58.0
+  platform: Windows 8.1
+edge_win:
+  browser: Microsoft Edge
+  version: 14.14393
+  platform: Windows 10
