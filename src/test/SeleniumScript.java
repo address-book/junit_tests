@@ -1,6 +1,9 @@
 package test;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +14,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.junit.Assert.assertEquals;
 
 public class SeleniumScript {
+
+    @Rule
+    public TestWatcher watcher = new TestWatcher() {
+        @Override
+        protected void failed(Throwable e, Description description) {
+            System.out.println(description.getMethodName() + ": Failed");
+        }
+
+        @Override
+        protected void succeeded(Description description) {
+            System.out.println(description.getMethodName() + ": Succeeded");
+        }
+    };
 
     @Test
     public void signInLink() {
