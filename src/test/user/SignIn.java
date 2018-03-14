@@ -9,16 +9,20 @@ import static org.junit.Assert.assertEquals;
 public class SignIn extends  Base {
 
     @Test
-    public void signIn() {
+    public void signIn() throws InterruptedException {
         driver.get("http://a.testaddressbook.com");
         driver.findElement(By.id("sign-in")).click();
 
         String email = "techwell@example.com";
         String password = "password";
 
+        Thread.sleep(1000);
+
         driver.findElement(By.id("session_email")).sendKeys(email);
         driver.findElement(By.id("session_password")).sendKeys(password);
         driver.findElement(By.tagName("form")).submit();
+
+        Thread.sleep(1000);
 
         By currentUser = By.cssSelector("span[data-test=current-user]");
         String user = driver.findElement(currentUser).getText();
