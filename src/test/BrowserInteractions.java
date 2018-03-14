@@ -1,6 +1,7 @@
 package test;
 
 import org.junit.Test;
+import test.base.Base;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;

@@ -3,6 +3,7 @@ package test;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
+import test.base.Base;
 
 import static org.junit.Assert.assertEquals;
 

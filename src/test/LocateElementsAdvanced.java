@@ -3,8 +3,9 @@ package test;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import test.base.Base;
 
-public class LocateElementsAdvanced extends  Base {
+public class LocateElementsAdvanced extends Base {
 
     @Before
     public void navigate() {

@@ -2,6 +2,7 @@ package test;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import test.base.Base;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

@@ -2,6 +2,7 @@ package test;
 
 import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
+import test.base.Base;
 
 import java.util.Set;
 
