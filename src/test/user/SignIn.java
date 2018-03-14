@@ -3,6 +3,9 @@ package test.user;
 import org.junit.Test;
 import test.base.Base;
 import test.data.UserData;
+import test.pages.HomePage;
+import test.pages.SignInPage;
+
 import java.util.HashMap;
 
 import static org.junit.Assert.assertTrue;
