@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Base {
 
-    WebDriver driver;
+    protected WebDriver driver;
 
     @Rule
     public TestWatcher watcher = new TestWatcher() {
