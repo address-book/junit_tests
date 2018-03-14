@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import test.base.Base;
+import test.data.UserData;
+import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,8 +17,9 @@ public class SignIn extends  Base {
         driver.get("http://a.testaddressbook.com");
         driver.findElement(By.id("sign-in")).click();
 
-        String email = "techwell@example.com";
-        String password = "password";
+        HashMap validUser = (HashMap) new UserData().validUser();
+        String email = (String) validUser.get("email");
+        String password = (String) validUser.get("password");
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(
