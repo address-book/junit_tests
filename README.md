@@ -14,7 +14,20 @@ and download the tutorial zip file that corresponds with your workshop.
 
 <br />
 
-## Setting Up Your Environment
+## Workshop Prerequisites
+
+1. [Install Git](https://github.com/sauce-examples/address_book_junit#install-git)
+  * [Mac](https://github.com/sauce-examples/address_book_junit#macosx-screen-cast)
+  * [Windows](https://github.com/sauce-examples/address_book_junit#windows-screen-cast)
+2. [Install IntelliJ](https://github.com/sauce-examples/address_book_junit#install-intellij)
+  * [Mac](https://github.com/sauce-examples/address_book_junit#macosx-screen-cast-1)
+  * [Windows](https://github.com/sauce-examples/address_book_junit#windows-screen-cast-1)
+3. [Install JDK](https://github.com/sauce-examples/address_book_junit#install-the-java-developers-kit)
+  * [Mac](https://github.com/sauce-examples/address_book_junit#macosx-screen-cast-2)
+  * [Windows](https://github.com/sauce-examples/address_book_junit#windows-screen-cast-2)
+4. [Set up Project](https://github.com/sauce-examples/address_book_junit#set-up-this-project-in-intellij)
+  * [Mac](https://github.com/sauce-examples/address_book_junit#macosx)
+  * [Windows](https://github.com/sauce-examples/address_book_junit#windows)
 
 ### Install Git
 
@@ -122,7 +135,7 @@ Double-click the installer package to begin the installation.
         >You should see the code begin to build, and then a console window will open. You should see that the driver opens and 
         closes a browser, confirming that the Selenium environment is running on your local machine.
 
-#### Windows:
+### Windows:
 
 1. Downloading the Project Files
     * Go to [https://github.com/sauce-examples/address_book_junit/releases](https://github.com/sauce-examples/address_book_junit/releases).
