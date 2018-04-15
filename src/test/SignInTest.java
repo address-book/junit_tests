@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import test.data.UserData;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,8 +23,10 @@ public class SignInTest extends Base {
                 ExpectedConditions.presenceOfElementLocated(
                         By.id("session_email")));
 
-        emailElement.sendKeys("user@example.com");
-        driver.findElement(By.id("session_password")).sendKeys("password");
+        UserData user = UserData.validUser();
+
+        emailElement.sendKeys(user.getEmail());
+        driver.findElement(By.id("session_password")).sendKeys(user.getPassword());
         driver.findElement(By.name("commit")).click();
 
         assertEquals("Address Book", driver.getTitle());
