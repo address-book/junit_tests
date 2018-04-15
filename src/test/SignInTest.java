@@ -6,9 +6,12 @@ import org.openqa.selenium.By;
 public class SignInTest extends Base {
 
     @Test
-    public void signInLink() {
+    public void signInLink() throws InterruptedException {
         driver.get("http://a.testaddressbook.com");
         driver.findElement(By.id("sign-in")).click();
+
+        Thread.sleep(2000);
+
         driver.findElement(By.id("session_email")).
                 sendKeys("user@example.com");
         driver.findElement(By.id("session_password")).
