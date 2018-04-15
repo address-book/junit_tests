@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SeleniumScript extends Base{
+public class SeleniumScript extends BaseRemote {
 
     @Test
     public void signInLink() {
