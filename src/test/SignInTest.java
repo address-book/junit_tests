@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.junit.Assert.assertEquals;
+
 
 public class SignInTest extends Base {
 
@@ -23,6 +25,13 @@ public class SignInTest extends Base {
         emailElement.sendKeys("user@example.com");
         driver.findElement(By.id("session_password")).sendKeys("password");
         driver.findElement(By.name("commit")).click();
+
+        assertEquals("Address Book", driver.getTitle());
+        assertEquals("http://a.testaddressbook.com/", driver.getCurrentUrl());
+
+        By currentUser = By.cssSelector("span[data-test=current-user]");
+        assertEquals(1, driver.findElements(currentUser).size());
+        assertEquals("user@example.com", driver.findElement(currentUser).getText());
     }
 
 }
