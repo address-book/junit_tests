@@ -2,14 +2,10 @@ package test;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.function.Function;
 
 public class SignInTest extends Base {
 
@@ -18,17 +14,11 @@ public class SignInTest extends Base {
         driver.get("http://a.testaddressbook.com");
         driver.findElement(By.id("sign-in")).click();
 
-        Wait fluentWait = new FluentWait(driver)
-                .withTimeout(Duration.ofSeconds(20))
-                .pollingEvery(Duration.ofMillis(500))
-                .ignoring(NoSuchElementException.class);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
 
-        WebElement emailElement = (WebElement) fluentWait
-                .until(new Function<WebDriver, WebElement>() {
-            public WebElement apply(WebDriver browser) {
-                return browser.findElement(By.id("session_email"));
-            }
-        });
+        WebElement emailElement = wait.until(
+                ExpectedConditions.presenceOfElementLocated(
+                        By.id("session_email")));
 
         emailElement.sendKeys("user@example.com");
         driver.findElement(By.id("session_password")).sendKeys("password");
