@@ -1,9 +1,11 @@
 package test;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -19,6 +21,35 @@ public class Base {
 
     @Rule
     public TestName name = new TestName();
+
+    @Rule
+    public TestWatcher watcher = new TestWatcher() {
+        @Override
+        protected void failed(Throwable e, Description description) {
+            if (useSauce == null) {
+                System.out.println("Test Failed");
+            } else {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("sauce:job-result=failed");
+            }
+        }
+
+        @Override
+        protected void succeeded(Description description) {
+            if (useSauce == null) {
+                System.out.println("Test Passed");
+            } else {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("sauce:job-result=passed");
+            }
+        }
+
+        @Override
+        protected void finished(Description description) {
+            driver.quit();
+        }
+    };
+
 
     @Before
     public void setup() throws MalformedURLException {
@@ -43,11 +74,6 @@ public class Base {
 
             driver = new RemoteWebDriver(new URL(url), caps);
         }
-    }
-
-    @After
-    public void teardown() {
-        driver.quit();
     }
 
 }
