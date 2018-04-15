@@ -2,6 +2,8 @@ package test;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
+import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -14,6 +16,9 @@ public class Base {
 
     protected WebDriver driver;
     private String useSauce = System.getenv("USE_SAUCE");
+
+    @Rule
+    public TestName name = new TestName();
 
     @Before
     public void setup() throws MalformedURLException {
@@ -29,6 +34,12 @@ public class Base {
             DesiredCapabilities caps = DesiredCapabilities.chrome();
             caps.setCapability("platform", "macOS 10.12");
             caps.setCapability("version", "63.0");
+
+            String buildEnv = System.getenv("BUILD_TAG");
+            caps.setCapability("name", name.getMethodName());
+            if (buildEnv != null) {
+                caps.setCapability("build", buildEnv);
+            }
 
             driver = new RemoteWebDriver(new URL(url), caps);
         }
