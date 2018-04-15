@@ -1,6 +1,8 @@
 package test.data;
 
 
+import com.github.javafaker.Faker;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +14,15 @@ public class UserData {
         Map<String, String> data = new HashMap<String, String>();
         data.put("email", "user@example.com");
         data.put("password", "password");
+
+        return new UserData(data);
+    }
+
+    public static UserData randomUser() {
+        Map<String, String> data = new HashMap<String, String>();
+        Faker faker = new Faker();
+        data.put("email", faker.internet().emailAddress());
+        data.put("password", faker.internet().password());
 
         return new UserData(data);
     }
