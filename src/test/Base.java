@@ -10,14 +10,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.yaml.snakeyaml.Yaml;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
 
 public class Base {
 
     protected WebDriver driver;
-    private String useSauce = System.getenv("USE_SAUCE");
+    private Boolean useSauce = System.getProperty("USE_SAUCE") != null;
 
     @Rule
     public TestName name = new TestName();
@@ -50,21 +54,28 @@ public class Base {
         }
     };
 
+    private static DesiredCapabilities createCapabilities(String value) throws FileNotFoundException {
+        FileReader file = new FileReader("src/test/config/platforms.yml");
+        Map<String, Object> platforms = (Map<String, Object>) new Yaml().load(file);
+        Map<String, Object> platform = (Map<String, Object>) platforms.get(value);
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        for (String key : platform.keySet()) {
+            capabilities.setCapability(key, platform.get(key));
+        }
+        return capabilities;
+    }
 
     @Before
-    public void setup() throws MalformedURLException {
-        if (useSauce == null) {
-            System.setProperty("webdriver.chrome.driver", "lib/drivers/chromedriver");
-            driver = new ChromeDriver();
-        } else {
+    public void setup() throws MalformedURLException, FileNotFoundException {
+        if (useSauce) {
             String user = System.getenv("SAUCE_USERNAME");
             String key = System.getenv("SAUCE_ACCESS_KEY");
 
-            String url = "https://"+user+":"+key+"@ondemand.saucelabs.com:443/wd/hub";
+            String platformProperty = System.getProperty("PLATFORM");
+            String platform = (platformProperty != null) ? platformProperty : "chrome_mac";
+            DesiredCapabilities caps = createCapabilities(platform);
 
-            DesiredCapabilities caps = DesiredCapabilities.chrome();
-            caps.setCapability("platform", "macOS 10.12");
-            caps.setCapability("version", "63.0");
+            String url = "https://"+user+":"+key+"@ondemand.saucelabs.com:443/wd/hub";
 
             String buildEnv = System.getenv("BUILD_TAG");
             caps.setCapability("name", name.getMethodName());
@@ -73,6 +84,9 @@ public class Base {
             }
 
             driver = new RemoteWebDriver(new URL(url), caps);
+        } else {
+            System.setProperty("webdriver.chrome.driver", "lib/drivers/chromedriver");
+            driver = new ChromeDriver();
         }
     }
 
