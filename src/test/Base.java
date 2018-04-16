@@ -30,21 +30,21 @@ public class Base {
     public TestWatcher watcher = new TestWatcher() {
         @Override
         protected void failed(Throwable e, Description description) {
-            if (useSauce == null) {
-                System.out.println("Test Failed");
-            } else {
+            if (useSauce) {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 js.executeScript("sauce:job-result=failed");
+            } else {
+                System.out.println("Test Failed");
             }
         }
 
         @Override
         protected void succeeded(Description description) {
-            if (useSauce == null) {
-                System.out.println("Test Passed");
-            } else {
+            if (useSauce) {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 js.executeScript("sauce:job-result=passed");
+            } else {
+                System.out.println("Test Passed");
             }
         }
 
