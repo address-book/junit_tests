@@ -1,40 +1,24 @@
 package test;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import test.data.UserData;
-
-import static org.junit.Assert.assertEquals;
 
 
 public class SignInTest extends Base {
 
     @Test
     public void signInLink() {
-        driver.get("http://a.testaddressbook.com");
-        driver.findElement(By.id("sign-in")).click();
+        HomePage homePage = HomePage.visit(driver);
+        homePage.getMenuButton().click();
+        SignInPage signInPage = homePage.getSignInLink().click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        signInPage.waitFor(homePage.getEmailElement);
+        UserData userData = UserData.validUser();
 
-        WebElement emailElement = wait.until(
-                ExpectedConditions.presenceOfElementLocated(
-                        By.id("session_email")));
-
-        UserData user = UserData.validUser();
-
-        emailElement.sendKeys(user.getEmail());
-        driver.findElement(By.id("session_password")).sendKeys(user.getPassword());
-        driver.findElement(By.name("commit")).click();
-
-        assertEquals("Address Book", driver.getTitle());
-        assertEquals("http://a.testaddressbook.com/", driver.getCurrentUrl());
-
-        By currentUser = By.cssSelector("span[data-test=current-user]");
-        assertEquals(1, driver.findElements(currentUser).size());
-        assertEquals("user@example.com", driver.findElement(currentUser).getText());
+        signInPage.getEmailElement().sendKeys(userData.getEmail());
+        signInPage.getPasswordElement().sendKeys(userData.getPassword());
+        signInPage.getSubmitButton().click();
+        assertTrue(homePage.isElementPresent(homPage.getCurrentUser));
     }
 
 }
