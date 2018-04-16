@@ -2,6 +2,9 @@ package test;
 
 import org.junit.Test;
 import test.data.UserData;
+import test.pages.*;
+
+import static org.junit.Assert.assertTrue;
 
 
 public class SignInTest extends Base {
