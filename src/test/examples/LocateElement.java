@@ -1,9 +1,10 @@
-package test;
+package test.examples;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import test.Base;
 
-public class LocateElement extends  Base {
+public class LocateElement extends Base {
 
     @Test
     public void locateSignInLinkByFindElement() {

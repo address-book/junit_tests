@@ -1,8 +1,9 @@
-package test;
+package test.examples;
 
 import org.junit.Before;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import test.Base;
 
 import java.net.MalformedURLException;
 import java.net.URL;

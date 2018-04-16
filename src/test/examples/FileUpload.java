@@ -1,9 +1,10 @@
-package test;
+package test.examples;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.LocalFileDetector;
+import test.Base;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,7 +1,8 @@
-package test;
+package test.examples;
 
 import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
+import test.Base;
 
 import java.util.Set;
 
