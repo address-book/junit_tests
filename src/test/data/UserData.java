@@ -20,16 +20,17 @@ public class UserData {
 
     public static UserData randomUser() {
         Map<String, String> data = new HashMap<String, String>();
-        Faker faker = new Faker();
-        data.put("email", faker.internet().emailAddress());
-        data.put("password", faker.internet().password());
 
         return new UserData(data);
     }
 
-    private UserData(Map<String, String> data) {
-        this.email = data.get("email");
-        this.password = data.get("password");
+    public UserData(Map<String, String> data) {
+        email = data.get("email");
+        password = data.get("password");
+
+        Faker faker = new Faker();
+        this.email = (email != null) ? email : faker.internet().emailAddress();
+        this.password = (password != null) ? password : faker.internet().password();
     }
 
     public String getEmail() {
