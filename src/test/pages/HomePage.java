@@ -3,9 +3,7 @@ package test.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage {
-    private WebDriver driver;
-
+public class HomePage extends BasePage{
     private By signInLink = By.cssSelector("a[data-test=sign-in]");
     private By user = By.cssSelector("span[data-test=current-user]");
 
@@ -20,11 +18,11 @@ public class HomePage {
     }
 
     public SignInPage navigateToSignIn() {
-        driver.findElement(signInLink).click();
+        click(signInLink);
         return new SignInPage(driver);
     }
 
     public Boolean isSignedIn() {
-        return driver.findElements(user).size() > 0;
+        return elementExists(user);
     }
 }

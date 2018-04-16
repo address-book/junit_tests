@@ -2,14 +2,9 @@ package test.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import test.data.UserData;
 
-public class SignInPage {
-    private WebDriver driver;
-
+public class SignInPage extends BasePage {
     private By emailField = By.id("session_email");
     private By passwordField = By.id("session_password");
     private By commitButton = By.name("commit");
@@ -19,13 +14,8 @@ public class SignInPage {
     }
 
     public void signIn(UserData data) {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-
-        WebElement emailElement = wait.until(
-                ExpectedConditions.presenceOfElementLocated(emailField));
-
-        emailElement.sendKeys(data.getEmail());
-        driver.findElement(passwordField).sendKeys(data.getPassword());
-        driver.findElement(commitButton).click();
+        sendKeys(emailField, data.getEmail());
+        sendKeys(passwordField, data.getPassword());
+        click(commitButton);
     }
 }
