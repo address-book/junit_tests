@@ -14,8 +14,8 @@ public class SignInPage extends BasePage {
     }
 
     public void signIn(UserData data) {
-        sendKeys(emailField, data.getEmail());
-        sendKeys(passwordField, data.getPassword());
-        click(commitButton);
+        getElement(emailField).sendKeys(data.getEmail());
+        getElement(passwordField).sendKeys(data.getPassword());
+        getElement(commitButton).click();
     }
 }

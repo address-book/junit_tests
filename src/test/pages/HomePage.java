@@ -18,11 +18,11 @@ public class HomePage extends BasePage{
     }
 
     public SignInPage navigateToSignIn() {
-        click(signInLink);
+        getElement(signInLink).click();
         return new SignInPage(driver);
     }
 
     public Boolean isSignedIn() {
-        return elementExists(user);
+        return getElement(user).exists();
     }
 }
