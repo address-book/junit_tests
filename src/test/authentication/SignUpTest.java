@@ -32,7 +32,7 @@ public class SignUpTest extends Base {
         driver.findElement(By.id("user_password")).sendKeys(newUser.getPassword());
         driver.findElement(By.name("commit")).click();
 
-        // Update Assertion
+        assertEquals("Address Book - SignIn", driver.getTitle());
     }
 
 }

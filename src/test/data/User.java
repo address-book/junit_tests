@@ -23,8 +23,10 @@ public class User {
         return new User();
     }
 
-    public static blankPassword() {
-        // implement method
+    public static User blankPassword() {
+        User user = new User();
+        user.password = "";
+        return user;
     }
 
     public User() {
