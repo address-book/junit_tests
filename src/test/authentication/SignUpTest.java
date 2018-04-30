@@ -22,4 +22,17 @@ public class SignUpTest extends Base {
         assertEquals("Address Book", driver.getTitle());
     }
 
+    @Test
+    public void signUpBlankPassword() {
+        driver.get("http://a.testaddressbook.com/sign_up");
+
+        User newUser = User.blankPassword();
+
+        driver.findElement(By.id("user_email")).sendKeys(newUser.getEmail());
+        driver.findElement(By.id("user_password")).sendKeys(newUser.getPassword());
+        driver.findElement(By.name("commit")).click();
+
+        // Update Assertion
+    }
+
 }

@@ -23,6 +23,10 @@ public class User {
         return new User();
     }
 
+    public static blankPassword() {
+        // implement method
+    }
+
     public User() {
         Faker faker = new Faker();
         this.email = faker.internet().emailAddress();
