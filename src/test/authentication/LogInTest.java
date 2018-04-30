@@ -52,8 +52,8 @@ public class LogInTest extends Base {
         driver.findElement(By.id("session_password")).sendKeys(password);
         driver.findElement(By.tagName("form")).submit();
 
-        // Add New Assertion
-
+        By emailField = By.id("sign-in");
+        assertTrue(driver.findElements(emailField).size() > 0);
     }
 
 }
