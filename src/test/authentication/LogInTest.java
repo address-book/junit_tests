@@ -1,6 +1,7 @@
 package test.authentication;
 
 import test.base.*;
+import test.data.*;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -17,8 +18,9 @@ public class LogInTest extends Base {
         driver.get("http://a.testaddressbook.com");
         driver.findElement(By.id("sign-in")).click();
 
-        String email = "user@example.com";
-        String password = "password";
+        User user = User.validUser();
+        String email = user.getEmail();
+        String password = user.getPassword();
 
         WebDriverWait explicitWait = new WebDriverWait(driver, 20);
 
