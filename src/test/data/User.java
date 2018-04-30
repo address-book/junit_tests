@@ -13,8 +13,13 @@ public class User {
         return user;
     }
 
-    public static invalidUser() {
-        // Implement invalidUser
+    public static User invalidUser() {
+        User user = new User();
+
+        user.email = "notauser@example.com";
+        user.password = "password";
+
+        return user;
     }
 
     public String getEmail() {
