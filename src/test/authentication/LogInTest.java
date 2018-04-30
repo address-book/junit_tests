@@ -18,24 +18,17 @@ public class LogInTest extends Base {
 
     @Test
     public void signInSuccessfully() {
-        driver.get("http://a.testaddressbook.com");
-        driver.findElement(By.id("sign-in")).click();
+        HomePage homePage = HomePage.visit(driver);
+        homePage.getMenuButton().click();
+        SignInPage signInPage = homePage.getSignInLink().click();
 
+        signInPage.waitFor(homePage.getEmailElement);
         User user = User.validUser();
-        String email = user.getEmail();
-        String password = user.getPassword();
 
-        WebDriverWait explicitWait = new WebDriverWait(driver, 20);
-
-        WebElement emailElement = explicitWait.until(
-                ExpectedConditions.presenceOfElementLocated(By.id("session_email")));
-
-        emailElement.sendKeys(email);
-        driver.findElement(By.id("session_password")).sendKeys(password);
-        driver.findElement(By.tagName("form")).submit();
-
-        By currentUser = By.cssSelector("span[data-test=current-user]");
-        assertTrue(driver.findElements(currentUser).size() > 0);
+        signInPage.getEmailElement().sendKeys(user.getEmail());
+        signInPage.getPasswordElement().sendKeys(user.getPassword());
+        signInPage.getSubmitButton().click();
+        assertTrue(homePage.isElementPresent(homePage.getCurrentUser));
     }
 
     @Test
