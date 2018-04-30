@@ -1,12 +1,13 @@
-package test;
+package test.examples;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import test.Base;
 
-public class SeleniumScript extends Base{
+public class SeleniumScript extends Base {
 
     @Test
     public void signInLink() {

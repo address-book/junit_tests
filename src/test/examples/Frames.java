@@ -1,6 +1,7 @@
-package test;
+package test.examples;
 
 import org.junit.Test;
+import test.Base;
 
 public class Frames extends Base {
 

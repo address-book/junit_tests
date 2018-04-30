@@ -1,8 +1,9 @@
-package test;
+package test.examples;
 
 import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
+import test.Base;
 
 public class AlertHandling extends Base {
 

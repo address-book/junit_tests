@@ -1,9 +1,10 @@
-package test;
+package test.examples;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import test.Base;
 
-public class ElementInformation extends Base{
+public class ElementInformation extends Base {
 
     @Test
     public void signInLink() {
