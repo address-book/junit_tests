@@ -14,6 +14,8 @@ public class LogInTest extends Base {
 
     @Test
     public void signInSuccessfully() {
+        // Rewrite this Declaratively
+
         HomePage homePage = HomePage.visit(driver);
         homePage.getMenuButton().click();
         SignInPage signInPage = homePage.getSignInLink().click();
