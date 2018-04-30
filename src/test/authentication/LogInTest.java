@@ -33,4 +33,27 @@ public class LogInTest extends Base {
         By currentUser = By.cssSelector("span[data-test=current-user]");
         assertTrue(driver.findElements(currentUser).size() > 0);
     }
+
+    @Test
+    public void signInUnsuccessfully() {
+        driver.get("http://a.testaddressbook.com");
+        driver.findElement(By.id("sign-in")).click();
+
+        User user = User.invalidUser();
+        String email = user.getEmail();
+        String password = user.getPassword();
+
+        WebDriverWait explicitWait = new WebDriverWait(driver, 20);
+
+        WebElement emailElement = explicitWait.until(
+                ExpectedConditions.presenceOfElementLocated(By.id("session_email")));
+
+        emailElement.sendKeys(email);
+        driver.findElement(By.id("session_password")).sendKeys(password);
+        driver.findElement(By.tagName("form")).submit();
+
+        // Add New Assertion
+
+    }
+
 }
