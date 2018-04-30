@@ -5,11 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import test.Base;
+import test.BaseAutoDriver;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class LogInTest extends Base {
+public class LogInTest extends BaseAutoDriver {
 
     @Test
     public void signInSuccessfully() {
