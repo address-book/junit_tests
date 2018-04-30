@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import test.Base;
 
+import static junit.framework.TestCase.assertTrue;
+
 public class LogInTest extends Base {
 
     @Test
@@ -25,5 +27,8 @@ public class LogInTest extends Base {
         emailElement.sendKeys(email);
         driver.findElement(By.id("session_password")).sendKeys(password);
         driver.findElement(By.tagName("form")).submit();
+
+        By currentUser = By.cssSelector("span[data-test=current-user]");
+        assertTrue(driver.findElements(currentUser).size() > 0);
     }
 }
