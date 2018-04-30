@@ -6,12 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.net.MalformedURLException;
+
 public class Base {
 
     protected WebDriver driver;
 
     @Before
-    public void setup() {
+    public void setup() throws MalformedURLException {
         System.setProperty("webdriver.chrome.driver", "lib/drivers/chromedriver");
 
         ChromeOptions chromeOptions = new ChromeOptions();
