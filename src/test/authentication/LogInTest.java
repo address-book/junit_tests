@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import test.Base;
 import test.data.User;
-import test.pages.HomePage;
+import test.pages.*;
 
 import static junit.framework.TestCase.assertTrue;
 
