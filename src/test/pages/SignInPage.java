@@ -4,9 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import test.data.*;
 
-public class SignInPage {
-    private WebDriver driver;
-
+public class SignInPage extends BasePage {
     private By emailField = By.id("session_email");
     private By passwordField = By.id("session_password");
     private By commitButton = By.name("commit");
@@ -35,8 +33,8 @@ public class SignInPage {
     }
 
     private void fillForm(User data) {
-        driver.findElement(emailField).sendKeys(data.getEmail());
-        driver.findElement(passwordField).sendKeys(data.getPassword());
-        driver.findElement(commitButton).click();
+        sendKeys(emailField, data.getEmail());
+        sendKeys(passwordField, data.getPassword());
+        click(commitButton);
     }
 }
