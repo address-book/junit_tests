@@ -2,32 +2,32 @@
 
 This open source code is for use in introductory Selenium workshops.
 
-See [LICENSE](https://github.com/sauce-examples/address_book_junit/LICENSE.md) file for details.
+See [LICENSE](https://github.com/address-book/junit_tests/LICENSE.md) file for details.
 
 <br />
 
 ## Description
 
 Different workshops and lessons will be managed by different branches. To ensure you are getting
-the correct code for your workshop, go to the [Releases Page](https://github.com/titusfortner/address_book_junit/releases/)
+the correct code for your workshop, go to the [Releases Page](https://github.com/address-book/junit_tests/releases/)
 and download the tutorial zip file that corresponds with your workshop.
 
 <br />
 
 ## Workshop Prerequisites
 
-1. [Install Git](https://github.com/sauce-examples/address_book_junit#install-git)
-    * [Mac](https://github.com/sauce-examples/address_book_junit#macosx-screen-cast)
-    * [Windows](https://github.com/sauce-examples/address_book_junit#windows-screen-cast)
-2. [Install IntelliJ](https://github.com/sauce-examples/address_book_junit#install-intellij)
-    * [Mac](https://github.com/sauce-examples/address_book_junit#macosx-screen-cast-1)
-    * [Windows](https://github.com/sauce-examples/address_book_junit#windows-screen-cast-1)
-3. [Install JDK](https://github.com/sauce-examples/address_book_junit#install-the-java-developers-kit)
-    * [Mac](https://github.com/sauce-examples/address_book_junit#macosx-screen-cast-2)
-    * [Windows](https://github.com/sauce-examples/address_book_junit#windows-screen-cast-2)
-4. [Set up Project](https://github.com/sauce-examples/address_book_junit#set-up-this-project-in-intellij)
-    * [Mac](https://github.com/sauce-examples/address_book_junit#macosx)
-    * [Windows](https://github.com/sauce-examples/address_book_junit#windows)
+1. [Install Git](https://github.com/address-book/junit_tests#install-git)
+    * [Mac](https://github.com/address-book/junit_tests#macosx-screen-cast)
+    * [Windows](https://github.com/address-book/junit_tests#windows-screen-cast)
+2. [Install IntelliJ](https://github.com/address-book/junit_tests#install-intellij)
+    * [Mac](https://github.com/address-book/junit_tests#macosx-screen-cast-1)
+    * [Windows](https://github.com/address-book/junit_tests#windows-screen-cast-1)
+3. [Install JDK](https://github.com/address-book/junit_tests#install-the-java-developers-kit)
+    * [Mac](https://github.com/address-book/junit_tests#macosx-screen-cast-2)
+    * [Windows](https://github.com/address-book/junit_tests#windows-screen-cast-2)
+4. [Set up Project](https://github.com/address-book/junit_tests#set-up-this-project-in-intellij)
+    * [Mac](https://github.com/address-book/junit_tests#macosx)
+    * [Windows](https://github.com/address-book/junit_tests#windows)
 
 ### Install Git
 
@@ -107,7 +107,7 @@ Double-click the installer package to begin the installation.
 #### MacOSX:
 
 1. Downloading the Project Files
-    * Go to [https://github.com/sauce-examples/address_book_junit/releases](https://github.com/sauce-examples/address_book_junit/releases).
+    * Go to [https://github.com/address-book/junit_tests/releases](https://github.com/address-book/junit_tests/releases).
     * Download and extract the latest `tutorial_mac.zip` file, or the one that matches the name of your workshop.
         > You can save the zip file to any directory you want, including Downloads. You will just need to remember the 
         directory when you want to open the tutorial files in IntelliJ. 
@@ -115,7 +115,7 @@ Double-click the installer package to begin the installation.
 2. Opening the Project in IntelliJ
     * Launch IntelliJ.
     * Click **Open**.
-    * Browse to the **address_book_junit** directory, and click **Open**.
+    * Browse to the **junit_tests** directory, and click **Open**.
     * Click the **Sidebars** icon in the lower left corner of IntelliJ to open the sidebars.
     * Open the **Project** sidebar and expand the directories **lib > src > test**.
     * In the **test** directory, double click **SeleniumExamples**, and a sample file will load into the editor window.
@@ -135,10 +135,18 @@ Double-click the installer package to begin the installation.
         >You should see the code begin to build, and then a console window will open. You should see that the driver opens and 
         closes a browser, confirming that the Selenium environment is running on your local machine.
 
+5. Ensure Git is properly configured
+    * Click the terminal tab on the bottom left of IntelliJ
+    * Type the following commands into the terminal, replacing the example information with your own
+        ```
+        $ git config --global user.name "John Doe"
+        $ git config --global user.email johndoe@example.com
+        ```
+
 ### Windows:
 
 1. Downloading the Project Files
-    * Go to [https://github.com/sauce-examples/address_book_junit/releases](https://github.com/sauce-examples/address_book_junit/releases).
+    * Go to [https://github.com/address-book/junit_tests/releases](https://github.com/address-book/junit_tests/releases).
     * Download and extract the `tutorial_windows.zip` file, or the one that matches the name of your workshop.
         > You can save the zip file to any directory you want, including Downloads. You will just need to remember the 
         directory when you want to open the tutorial files in IntelliJ.
@@ -146,10 +154,10 @@ Double-click the installer package to begin the installation.
 2. Opening the Project in IntelliJ
     * Launch IntelliJ.
     * Click **Open**.
-    * Browse to the **projects > address_book_junit** directory you created, and click **OK**.
+    * Browse to the **projects > junit_tests** directory you created, and click **OK**.
     * Click the **Sidebars** icon in the lower left corner of IntelliJ to open the sidebars.
     * Open the **Project** sidebar.
-    * In the Project sidebar, expand the directories **address_book_junit > lib > src > test**.
+    * In the Project sidebar, expand the directories **junit_tests > lib > src > test**.
     * Select **SeleniumExamples**, and a sample file will load into the editor window.
 
 3. Configure the Project SDK
@@ -166,3 +174,11 @@ Double-click the installer package to begin the installation.
     * Select **Run 'SeleniumExamples'**.
         > You should see the code begin to build, and then a console window will open. You should see that the driver opens and 
         closes a browser, confirming that the Selenium environment is running on your local machine.
+
+5. Ensure Git is properly configured
+    * Click the terminal tab on the bottom left of IntelliJ
+    * Type the following commands into the terminal, replacing the example information with your own
+        ```
+        $ git config --global user.name "John Doe"
+        $ git config --global user.email johndoe@example.com
+        ```
