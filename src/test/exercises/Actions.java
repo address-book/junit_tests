@@ -26,10 +26,13 @@ public class Actions extends Base {
         String password = "password";
 
         // fill out email field using `email` variable
+        driver.findElement(By.id("user_email")).sendKeys(email);
 
         // fill out password field using `password` variable
+        driver.findElement(By.id("user_password")).sendKeys(password);
 
         // click Sign Up button (or Submit Form)
+        driver.findElement(By.name("commit")).click();
 
 
         // Note that because this user already exists, Sign Up will not be successful
