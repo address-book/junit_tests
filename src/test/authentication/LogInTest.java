@@ -4,15 +4,11 @@ import test.base.*;
 import test.data.*;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.*;
 
 public class LogInTest extends Base {
 
@@ -27,6 +23,9 @@ public class LogInTest extends Base {
 
     @Test
     public void signInUnsuccessfully() {
+
+        // Rewrite Test Declaratively
+
         driver.get("http://a.testaddressbook.com");
         driver.findElement(By.id("sign-in")).click();
 
@@ -52,6 +51,9 @@ public class LogInTest extends Base {
 
     @Test
     public void signInBlankPassword() {
+
+        // Rewrite Test Declaratively
+
         driver.get("http://a.testaddressbook.com");
         driver.findElement(By.id("sign-in")).click();
 
