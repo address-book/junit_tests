@@ -34,4 +34,10 @@ public class LogInTest extends Base {
         By currentUser = By.cssSelector("span[data-test=current-user]");
         assertTrue(driver.findElements(currentUser).size() > 0);
     }
+
+    @Test
+    public void signInUnsuccessfully() {
+        // Write Test that uses `Users.invalidUser()` to test invalid user
+    }
+
 }

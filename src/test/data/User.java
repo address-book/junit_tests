@@ -13,6 +13,10 @@ public class User {
         return user;
     }
 
+    public static invalidUser() {
+        // Implement invalidUser
+    }
+
     public String getEmail() {
         return email;
     }
