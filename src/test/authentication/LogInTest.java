@@ -18,17 +18,11 @@ public class LogInTest extends Base {
 
     @Test
     public void signInSuccessfully() {
-        HomePage homePage = HomePage.visit(driver);
-        homePage.getMenuButton().click();
-        SignInPage signInPage = homePage.getSignInLink().click();
+        SignInPage signInPage = SignInPage.visit(driver);
+        signInPage.signIn(User.validUser());
 
-        signInPage.waitFor(homePage.getEmailElement);
-        User user = User.validUser();
-
-        signInPage.getEmailElement().sendKeys(user.getEmail());
-        signInPage.getPasswordElement().sendKeys(user.getPassword());
-        signInPage.getSubmitButton().click();
-        assertTrue(homePage.isElementPresent(homePage.getCurrentUser));
+        HomePage homePage = new HomePage(driver);
+        assertTrue(homePage.isSignedIn());
     }
 
     @Test
