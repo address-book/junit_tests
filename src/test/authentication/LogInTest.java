@@ -22,27 +22,13 @@ public class LogInTest extends Base {
 
     @Test
     public void signInUnsuccessfully() {
+        HomePage homePage = HomePage.visit(driver);
+        homePage.navigateToSignIn();
 
-        // Rewrite Test Declaratively
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.signIn(User.invalidUser());
 
-        driver.get("http://a.testaddressbook.com");
-        driver.findElement(By.id("sign-in")).click();
-
-        User user = User.invalidUser();
-        String email = user.getEmail();
-        String password = user.getPassword();
-
-        WebDriverWait explicitWait = new WebDriverWait(driver, 20);
-
-        WebElement emailElement = explicitWait.until(
-                ExpectedConditions.presenceOfElementLocated(By.id("session_email")));
-
-        emailElement.sendKeys(email);
-        driver.findElement(By.id("session_password")).sendKeys(password);
-        driver.findElement(By.tagName("form")).submit();
-
-        By emailField = By.id("sign-in");
-        assertTrue(driver.findElements(emailField).size() > 0);
+        assertFalse(homePage.isSignedIn());
     }
 
 }
