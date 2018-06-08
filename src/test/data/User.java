@@ -16,22 +16,17 @@ public class User {
     }
 
     public static User invalidUser() {
-        User user = new User();
-
-        user.email = "notauser@example.com";
-        user.password = "password";
-
-        return user;
+        return new User();
     }
 
     public static User randomUser() {
-        User user = new User();
+        return new User();
+    }
 
+    public User() {
         Faker faker = new Faker();
-        user.email = faker.internet().emailAddress();
-        user.password = faker.internet().password();
-
-        return user;
+        this.email = faker.internet().emailAddress();
+        this.password = faker.internet().password();
     }
 
     public String getEmail() {

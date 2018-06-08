@@ -16,7 +16,7 @@ public class SignUpTest extends Base {
     public void signUpSuccessfully() {
         driver.get("http://a.testaddressbook.com/sign_up");
 
-        User user = User.randomUser();
+        User user = new User();
         String email = user.getEmail();
         String password = user.getPassword();
 
