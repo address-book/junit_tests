@@ -1,0 +1,33 @@
+win_10_ff:
+  platformName: Windows 10
+  browserName: Firefox
+  browserVersion: '55.0'
+  sauce:
+    seleniumVersion: '3.11.0'
+win_10_chrome:
+  platformName: Windows 10
+  browserName: Chrome
+  browserVersion: '65.0'
+  sauce:
+    seleniumVersion: '3.11.0'
+win_10_edge:
+  platformName: Windows 10
+  browserName: MicrosoftEdge
+  browserVersion: '14.14393'
+  sauce:
+    seleniumVersion: '3.11.0'
+windows_8_ie:
+  seleniumVersion: '3.11.0'
+  platform: Windows 8
+  browserName: Internet Explorer
+  version: '10.0'
+mac_sierra_chrome:
+  seleniumVersion: '3.11.0'
+  platform: macOS 10.12
+  browserName: Chrome
+  version: '65.0'
+windows_7_ff:
+  seleniumVersion: '3.11.0'
+  platform: Windows 7
+  browserName: firefox
+  version: '59.0'
