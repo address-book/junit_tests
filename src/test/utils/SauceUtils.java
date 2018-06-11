@@ -23,16 +23,6 @@ public class SauceUtils {
     public static RemoteWebDriver getDriver() throws MalformedURLException, FileNotFoundException {
         DesiredCapabilities caps = createCapabilities();
 
-//        DesiredCapabilities caps = DesiredCapabilities.firefox();
-//
-//        caps.setCapability("platformName", "Windows 10");
-//        caps.setCapability("browserVersion", "latest");
-//
-//        MutableCapabilities sauceCaps = new MutableCapabilities();
-//        sauceCaps.setCapability("seleniumVersion", "3.11.0");
-//        sauceCaps.setCapability("name", "my test case");
-//        caps.setCapability("sauce:options", sauceCaps);
-
         URL url = getSauceURL();
         return new RemoteWebDriver(url, caps);
     }
@@ -54,22 +44,18 @@ public class SauceUtils {
         String browserName = (String) platform.remove("browserName");
         if(browserName.equals("Firefox")) {
             capabilities = DesiredCapabilities.firefox();
-        } else if(browserName.equals("MicrosoftEdge")) {
+        } else if(browserName.equals("Edge")) {
             capabilities = DesiredCapabilities.edge();
+        } else if(browserName.equals("IE")) {
+            capabilities = DesiredCapabilities.internetExplorer();
         } else {
             capabilities = DesiredCapabilities.chrome();
-        }
-
-        Map<String, Object> sauceOpts = (Map<String, Object>) platform.remove("sauce");
-        MutableCapabilities sauceCaps = new MutableCapabilities();
-        for (String key : sauceOpts.keySet()) {
-            sauceCaps.setCapability(key, sauceOpts.get(key));
         }
 
         for (String key : platform.keySet()) {
             capabilities.setCapability(key, platform.get(key));
         }
-        capabilities.setCapability("sauce:options", sauceCaps);
+        // capabilities.setCapability("build", "Test");
 
         return capabilities;
     }
