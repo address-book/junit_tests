@@ -56,7 +56,7 @@ public class SauceUtils {
         for (String key : platform.keySet()) {
             capabilities.setCapability(key, platform.get(key));
         }
-        capabilities.setCapability("build", "try");
+        capabilities.setCapability("build", "Test");
 
         return capabilities;
     }
