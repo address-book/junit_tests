@@ -50,12 +50,13 @@ public class SauceUtils {
             capabilities = DesiredCapabilities.internetExplorer();
         } else {
             capabilities = DesiredCapabilities.chrome();
+            capabilities.setCapability("extendedDebugging" , "true");
         }
 
         for (String key : platform.keySet()) {
             capabilities.setCapability(key, platform.get(key));
         }
-        // capabilities.setCapability("build", "Test");
+        capabilities.setCapability("build", "try");
 
         return capabilities;
     }

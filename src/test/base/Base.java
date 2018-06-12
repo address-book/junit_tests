@@ -18,6 +18,13 @@ public class Base {
     protected WebDriver driver;
     private Boolean useSauce = System.getProperty("USE_SAUCE") == null;
 
+    protected void sauceDebugMessage(String msg){
+        if (useSauce) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("sauce:context=" + msg);
+        }
+    }
+
     @Rule
     public TestName name = new TestName();
 
